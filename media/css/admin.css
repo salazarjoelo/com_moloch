@@ -1,0 +1,728 @@
+/**
+ * Moloch Component Administrator Styles
+ * Author: Lic. Joel Salazar Ramírez <joel@edugame.digital>
+ * Copyright (C) 2025. All rights reserved.
+ * License: GNU General Public License version 2 or later
+ */
+
+/* ==========================================================================
+   Base Admin Styles
+   ========================================================================== */
+
+.moloch-admin {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ==========================================================================
+   Dashboard Styles
+   ========================================================================== */
+
+.moloch-dashboard {
+    padding: 20px 0;
+}
+
+.dashboard-stats {
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.stat-card .stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 24px;
+    color: white;
+}
+
+.stat-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.stat-card .stat-label {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.stat-card .stat-change {
+    font-size: 0.85rem;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    color: #27ae60;
+}
+
+.stat-change.negative {
+    color: #e74c3c;
+}
+
+/* Stat card color variations */
+.stat-card.stat-issues .stat-icon {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.stat-card.stat-categories .stat-icon {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.stat-card.stat-votes .stat-icon {
+    background: linear-gradient(135deg, #27ae60, #229954);
+}
+
+.stat-card.stat-users .stat-icon {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+/* ==========================================================================
+   Charts and Graphs
+   ========================================================================== */
+
+.chart-container {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin-bottom: 24px;
+}
+
+.chart-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   Issue List Styles
+   ========================================================================== */
+
+.moloch-issues-list .table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.moloch-issues-list .table thead th {
+    background: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    color: #495057;
+    padding: 16px 12px;
+}
+
+.moloch-issues-list .table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.moloch-issues-list .table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.moloch-issues-list .table tbody td {
+    padding: 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+/* Status badges */
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-published {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-unpublished {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-featured {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Vote summary in table */
+.vote-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.vote-summary .badge {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+}
+
+/* Category and step colors */
+.category-indicator,
+.step-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* ==========================================================================
+   Form Styles
+   ========================================================================== */
+
+.moloch-form .card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin-bottom: 24px;
+}
+
+.moloch-form .card-header {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-radius: 12px 12px 0 0;
+    padding: 16px 20px;
+}
+
+.moloch-form .card-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.moloch-form .form-group {
+    margin-bottom: 20px;
+}
+
+.moloch-form .form-label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.moloch-form .form-control {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.moloch-form .form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.moloch-form .form-text {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-top: 6px;
+}
+
+/* ==========================================================================
+   Location Map Styles (Admin)
+   ========================================================================== */
+
+.admin-location-map {
+    height: 400px;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    overflow: hidden;
+    margin: 16px 0;
+}
+
+.coordinates-display {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.coordinates-display .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   File Management
+   ========================================================================== */
+
+.attachments-manager {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+}
+
+.attachment-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.attachment-item .file-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9ecef;
+    border-radius: 6px;
+    margin-right: 12px;
+    font-size: 18px;
+    color: #6c757d;
+}
+
+.attachment-item .file-info {
+    flex: 1;
+}
+
+.attachment-item .file-name {
+    font-weight: 500;
+    color: #2c3e50;
+    margin: 0 0 4px 0;
+}
+
+.attachment-item .file-meta {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin: 0;
+}
+
+.attachment-item .file-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* ==========================================================================
+   Logs and Activity
+   ========================================================================== */
+
+.activity-log {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.log-entry {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+}
+
+.log-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    font-size: 16px;
+    color: white;
+}
+
+.log-icon.log-create {
+    background: #27ae60;
+}
+
+.log-icon.log-edit {
+    background: #3498db;
+}
+
+.log-icon.log-delete {
+    background: #e74c3c;
+}
+
+.log-icon.log-publish {
+    background: #f39c12;
+}
+
+.log-content {
+    flex: 1;
+}
+
+.log-action {
+    font-weight: 500;
+    color: #2c3e50;
+    margin: 0 0 4px 0;
+}
+
+.log-details {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin: 0 0 4px 0;
+}
+
+.log-time {
+    font-size: 0.8rem;
+    color: #95a5a6;
+}
+
+/* ==========================================================================
+   Batch Operations
+   ========================================================================== */
+
+.batch-form {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+}
+
+.batch-form .form-group {
+    margin-bottom: 16px;
+}
+
+.batch-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #dee2e6;
+}
+
+/* ==========================================================================
+   Quick Actions
+   ========================================================================== */
+
+.quick-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.quick-action-btn {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #495057;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quick-action-btn:hover {
+    border-color: #3498db;
+    color: #3498db;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+/* ==========================================================================
+   Search and Filters
+   ========================================================================== */
+
+.search-tools {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin-bottom: 24px;
+}
+
+.search-tools .form-row {
+    margin-bottom: 16px;
+}
+
+.search-tools .form-row:last-child {
+    margin-bottom: 0;
+}
+
+.filter-clear {
+    color: #6c757d;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.filter-clear:hover {
+    color: #e74c3c;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Toolbar Enhancements
+   ========================================================================== */
+
+.toolbar {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin-bottom: 24px;
+}
+
+.toolbar .btn {
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 8px 16px;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+.toolbar .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* ==========================================================================
+   Responsive Design (Admin)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .dashboard-stats .col-md-3 {
+        margin-bottom: 20px;
+    }
+    
+    .stat-card .stat-number {
+        font-size: 2rem;
+    }
+    
+    .chart-container {
+        padding: 16px;
+    }
+    
+    .moloch-issues-list .table {
+        font-size: 0.85rem;
+    }
+    
+    .moloch-issues-list .d-none.d-md-table-cell,
+    .moloch-issues-list .d-none.d-lg-table-cell {
+        display: none !important;
+    }
+    
+    .quick-actions {
+        flex-direction: column;
+    }
+    
+    .quick-action-btn {
+        justify-content: center;
+    }
+    
+    .batch-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .batch-actions .btn {
+        width: 100%;
+    }
+    
+    .coordinates-display {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .attachment-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .attachment-item .file-actions {
+        align-self: stretch;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .moloch-admin {
+        padding: 10px;
+    }
+    
+    .dashboard-stats {
+        margin-bottom: 20px;
+    }
+    
+    .stat-card {
+        padding: 16px;
+    }
+    
+    .chart-container {
+        padding: 12px;
+    }
+    
+    .chart-title {
+        font-size: 1rem;
+    }
+    
+    .search-tools {
+        padding: 16px;
+    }
+    
+    .toolbar {
+        padding: 12px 16px;
+    }
+    
+    .log-entry {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .log-icon {
+        align-self: flex-start;
+        margin-right: 0;
+    }
+}
+
+/* ==========================================================================
+   Print Styles (Admin)
+   ========================================================================== */
+
+@media print {
+    .toolbar,
+    .quick-actions,
+    .batch-form,
+    .search-tools,
+    .btn,
+    .dropdown {
+        display: none !important;
+    }
+    
+    .moloch-issues-list .table {
+        box-shadow: none;
+        border: 1px solid #dee2e6;
+    }
+    
+    .stat-card {
+        box-shadow: none;
+        border: 1px solid #dee2e6;
+        break-inside: avoid;
+    }
+    
+    .chart-container {
+        box-shadow: none;
+        border: 1px solid #dee2e6;
+        break-inside: avoid;
+    }
+}
+
+/* ==========================================================================
+   Dark Mode Support (Admin)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    .moloch-admin {
+        background-color: #1a1a1a;
+        color: #e9ecef;
+    }
+    
+    .stat-card,
+    .chart-container,
+    .search-tools,
+    .toolbar,
+    .activity-log {
+        background-color: #2d2d2d;
+        border-color: #404040;
+    }
+    
+    .moloch-issues-list .table {
+        background-color: #2d2d2d;
+        color: #e9ecef;
+    }
+    
+    .moloch-issues-list .table thead th {
+        background-color: #333;
+        color: #e9ecef;
+        border-color: #404040;
+    }
+    
+    .moloch-issues-list .table tbody tr:hover {
+        background-color: #333;
+    }
+    
+    .moloch-form .form-control {
+        background-color: #2d2d2d;
+        border-color: #404040;
+        color: #e9ecef;
+    }
+    
+    .moloch-form .form-control:focus {
+        background-color: #333;
+        border-color: #3498db;
+        color: #e9ecef;
+    }
+    
+    .quick-action-btn {
+        background-color: #2d2d2d;
+        border-color: #404040;
+        color: #e9ecef;
+    }
+    
+    .quick-action-btn:hover {
+        background-color: #333;
+        color: #3498db;
+    }
+}

@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <name>com_moloch.issue</name>
+
+    <fieldset name="issue"
+        addfieldprefix="Moloch\Component\Moloch\Administrator\Field"
+        addruleprefix="Moloch\Component\Moloch\Administrator\Rule">
+
+        <field
+            name="id"
+            type="hidden"
+        />
+
+        <field
+            name="title"
+            type="text"
+            label="COM_MOLOCH_ISSUE_TITLE"
+            description="COM_MOLOCH_ISSUE_TITLE_DESC"
+            class="form-control inputbox"
+            size="60"
+            maxlength="255"
+            required="true"
+            validate="string"
+        />
+
+        <field
+            name="alias"
+            type="text"
+            label="JFIELD_ALIAS_LABEL"
+            description="JFIELD_ALIAS_DESC"
+            class="form-control inputbox"
+            size="40"
+            maxlength="400"
+        />
+
+        <field
+            name="catid"
+            type="categoryedit"
+            extension="com_moloch"
+            label="JGLOBAL_CATEGORY"
+            description="COM_MOLOCH_FIELD_CATEGORY_DESC"
+            class="form-select"
+            required="true"
+        />
+
+        <field
+            name="stepid"
+            type="sql"
+            label="COM_MOLOCH_FIELD_STEP_LABEL"
+            description="COM_MOLOCH_FIELD_STEP_DESC"
+            class="form-select"
+            query="SELECT id, title FROM #__moloch_steps WHERE published = 1 ORDER BY ordering ASC"
+            key_field="id"
+            value_field="title"
+            default="1"
+        />
+
+        <field
+            name="description"
+            type="editor"
+            label="JGLOBAL_DESCRIPTION"
+            description="COM_MOLOCH_FIELD_DESCRIPTION_DESC"
+            filter="JComponentHelper::filterText"
+            buttons="true"
+            rows="10"
+            cols="5"
+            required="true"
+        />
+
+        <field
+            name="address"
+            type="textarea"
+            label="COM_MOLOCH_FIELD_ADDRESS_LABEL"
+            description="COM_MOLOCH_FIELD_ADDRESS_DESC"
+            class="form-control"
+            rows="3"
+            cols="40"
+            maxlength="500"
+        />
+
+        <field
+            name="latitude"
+            type="number"
+            label="COM_MOLOCH_FIELD_LATITUDE_LABEL"
+            description="COM_MOLOCH_FIELD_LATITUDE_DESC"
+            class="form-control"
+            step="any"
+            min="-90"
+            max="90"
+        />
+
+        <field
+            name="longitude"
+            type="number"
+            label="COM_MOLOCH_FIELD_LONGITUDE_LABEL"
+            description="COM_MOLOCH_FIELD_LONGITUDE_DESC"
+            class="form-control"
+            step="any"
+            min="-180"
+            max="180"
+        />
+
+        <field
+            name="published"
+            type="list"
+            label="JSTATUS"
+            description="JFIELD_PUBLISHED_DESC"
+            class="form-select"
+            size="1"
+            default="1"
+        >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+
+        <field
+            name="featured"
+            type="radio"
+            label="JFEATURED"
+            description="JFIELD_FEATURED_DESC"
+            class="btn-group btn-group-yesno"
+            default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field
+            name="access"
+            type="accesslevel"
+            label="JFIELD_ACCESS_LABEL"
+            description="JFIELD_ACCESS_DESC"
+            class="form-select"
+            size="1"
+        />
+
+        <field
+            name="created"
+            type="calendar"
+            label="JGLOBAL_CREATED"
+            description="COM_MOLOCH_FIELD_CREATED_DESC"
+            class="form-control"
+            size="22"
+            format="%Y-%m-%d %H:%M:%S"
+            filter="user_utc"
+        />
+
+        <field
+            name="created_by"
+            type="user"
+            label="JGLOBAL_FIELD_CREATED_BY_LABEL"
+            description="JGLOBAL_FIELD_CREATED_BY_DESC"
+        />
+
+        <field
+            name="created_by_alias"
+            type="text"
+            label="JGLOBAL_FIELD_CREATED_BY_ALIAS_LABEL"
+            description="JGLOBAL_FIELD_CREATED_BY_ALIAS_DESC"
+            class="form-control inputbox"
+            size="20"
+            maxlength="255"
+        />
+
+        <field
+            name="modified"
+            type="calendar"
+            label="JGLOBAL_FIELD_MODIFIED_LABEL"
+            description="COM_MOLOCH_FIELD_MODIFIED_DESC"
+            class="form-control readonly"
+            size="22"
+            readonly="true"
+            format="%Y-%m-%d %H:%M:%S"
+            filter="user_utc"
+        />
+
+        <field
+            name="modified_by"
+            type="user"
+            label="JGLOBAL_FIELD_MODIFIED_BY_LABEL"
+            description="JGLOBAL_FIELD_MODIFIED_BY_DESC"
+            readonly="true"
+        />
+
+        <field
+            name="publish_up"
+            type="calendar"
+            label="JGLOBAL_FIELD_PUBLISH_UP_LABEL"
+            description="JGLOBAL_FIELD_PUBLISH_UP_DESC"
+            class="form-control"
+            size="22"
+            format="%Y-%m-%d %H:%M:%S"
+            filter="user_utc"
+        />
+
+        <field
+            name="publish_down"
+            type="calendar"
+            label="JGLOBAL_FIELD_PUBLISH_DOWN_LABEL"
+            description="JGLOBAL_FIELD_PUBLISH_DOWN_DESC"
+            class="form-control"
+            size="22"
+            format="%Y-%m-%d %H:%M:%S"
+            filter="user_utc"
+        />
+
+        <field
+            name="metadesc"
+            type="textarea"
+            label="JFIELD_META_DESCRIPTION_LABEL"
+            description="JFIELD_META_DESCRIPTION_DESC"
+            class="form-control"
+            rows="3"
+            cols="40"
+            maxlength="1024"
+        />
+
+        <field
+            name="metakey"
+            type="textarea"
+            label="JFIELD_META_KEYWORDS_LABEL"
+            description="JFIELD_META_KEYWORDS_DESC"
+            class="form-control"
+            rows="3"
+            cols="40"
+        />
+
+        <field
+            name="ordering"
+            type="ordering"
+            label="JFIELD_ORDERING_LABEL"
+            description="JFIELD_ORDERING_DESC"
+            class="form-select"
+        />
+
+        <field
+            name="votes_up"
+            type="number"
+            label="COM_MOLOCH_FIELD_VOTES_UP_LABEL"
+            description="COM_MOLOCH_FIELD_VOTES_UP_DESC"
+            class="form-control readonly"
+            readonly="true"
+            default="0"
+        />
+
+        <field
+            name="votes_down"
+            type="number"
+            label="COM_MOLOCH_FIELD_VOTES_DOWN_LABEL"
+            description="COM_MOLOCH_FIELD_VOTES_DOWN_DESC"
+            class="form-control readonly"
+            readonly="true"
+            default="0"
+        />
+
+        <field
+            name="hits"
+            type="number"
+            label="JGLOBAL_HITS"
+            description="JGLOBAL_HITS_DESC"
+            class="form-control readonly"
+            readonly="true"
+            default="0"
+        />
+
+    </fieldset>
+
+    <fieldset name="params" label="JGLOBAL_FIELDSET_ADVANCED_OPTIONS">
+
+        <field
+            name="show_title"
+            type="radio"
+            label="COM_MOLOCH_FIELD_SHOW_TITLE_LABEL"
+            description="COM_MOLOCH_FIELD_SHOW_TITLE_DESC"
+            class="btn-group btn-group-yesno"
+            default=""
+        >
+            <option value="">JGLOBAL_USE_GLOBAL</option>
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+            name="show_intro"
+            type="radio"
+            label="COM_MOLOCH_FIELD_SHOW_INTRO_LABEL"
+            description="COM_MOLOCH_FIELD_SHOW_INTRO_DESC"
+            class="btn-group btn-group-yesno"
+            default=""
+        >
+            <option value="">JGLOBAL_USE_GLOBAL</option>
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+            name="show_category"
+            type="radio"
+            label="COM_MOLOCH_FIELD_SHOW_CATEGORY_LABEL"
+            description="COM_MOLOCH_FIELD_SHOW_CATEGORY_DESC"
+            class="btn-group btn-group-yesno"
+            default=""
+        >
+            <option value="">JGLOBAL_USE_GLOBAL</option>
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+            name="show_create_date"
+            type="radio"
+            label="COM_MOLOCH_FIELD_SHOW_CREATE_DATE_LABEL"
+            description="COM_MOLOCH_FIELD_SHOW_CREATE_DATE_DESC"
+            class="btn-group btn-group-yesno"
+            default=""
+        >
+            <option value="">JGLOBAL_USE_GLOBAL</option>
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+            name="show_modify_date"
+            type="radio"
+            label="COM_MOLOCH_FIELD_SHOW_MODIFY_DATE_LABEL"
+            description="COM_MOLOCH_FIELD_SHOW_MODIFY_DATE_DESC"
+            class="btn-group btn-group-yesno"
+            default=""
+        >
+            <option value="">JGLOBAL_USE_GLOBAL</option>
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+            name="show_author"
+            type="radio"
+            label="COM_MOLOCH_FIELD_SHOW_AUTHOR_LABEL"
+            description="COM_MOLOCH_FIELD_SHOW_AUTHOR_DESC"
+            class="btn-group btn-group-yesno"
+            default=""
+        >
+            <option value="">JGLOBAL_USE_GLOBAL</option>
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+            name="show_hits"
+            type="radio"
+            label="COM_MOLOCH_FIELD_SHOW_HITS_LABEL"
+            description="COM_MOLOCH_FIELD_SHOW_HITS_DESC"
+            class="btn-group btn-group-yesno"
+            default=""
+        >
+            <option value="">JGLOBAL_USE_GLOBAL</option>
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+            name="show_voting"
+            type="radio"
+            label="COM_MOLOCH_FIELD_SHOW_VOTING_LABEL"
+            description="COM_MOLOCH_FIELD_SHOW_VOTING_DESC"
+            class="btn-group btn-group-yesno"
+            default=""
+        >
+            <option value="">JGLOBAL_USE_GLOBAL</option>
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+            name="show_comments"
+            type="radio"
+            label="COM_MOLOCH_FIELD_SHOW_COMMENTS_LABEL"
+            description="COM_MOLOCH_FIELD_SHOW_COMMENTS_DESC"
+            class="btn-group btn-group-yesno"
+            default=""
+        >
+            <option value="">JGLOBAL_USE_GLOBAL</option>
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+            name="alternative_readmore"
+            type="text"
+            label="COM_MOLOCH_FIELD_ALTERNATIVE_READMORE_LABEL"
+            description="COM_MOLOCH_FIELD_ALTERNATIVE_READMORE_DESC"
+            class="form-control"
+            size="30"
+            maxlength="255"
+        />
+
+        <field
+            name="layout"
+            type="componentlayout"
+            label="JFIELD_ALT_LAYOUT_LABEL"
+            description="JFIELD_ALT_COMPONENT_LAYOUT_DESC"
+            class="form-select"
+            extension="com_moloch"
+            view="issue"
+            useglobal="true"
+        />
+
+    </fieldset>
+
+    <fieldset name="metadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
+
+        <field
+            name="robots"
+            type="list"
+            label="JFIELD_METADATA_ROBOTS_LABEL"
+            description="JFIELD_METADATA_ROBOTS_DESC"
+            class="form-select"
+        >
+            <option value="">JGLOBAL_USE_GLOBAL</option>
+            <option value="index, follow">JGLOBAL_INDEX_FOLLOW</option>
+            <option value="noindex, follow">JGLOBAL_NOINDEX_FOLLOW</option>
+            <option value="index, nofollow">JGLOBAL_INDEX_NOFOLLOW</option>
+            <option value="noindex, nofollow">JGLOBAL_NOINDEX_NOFOLLOW</option>
+        </field>
+
+        <field
+            name="author"
+            type="text"
+            label="JAUTHOR"
+            description="JFIELD_METADATA_AUTHOR_DESC"
+            class="form-control inputbox"
+            size="30"
+            maxlength="255"
+        />
+
+        <field
+            name="rights"
+            type="text"
+            label="JFIELD_METADATA_RIGHTS_LABEL"
+            description="JFIELD_METADATA_RIGHTS_DESC"
+            class="form-control inputbox"
+            size="30"
+            maxlength="255"
+        />
+
+    </fieldset>
+
+    <fieldset name="rules" label="JGLOBAL_FIELDSET_RULES">
+        <field
+            name="asset_id"
+            type="hidden"
+            filter="unset"
+        />
+
+        <field
+            name="rules"
+            type="rules"
+            label="JFIELD_RULES_LABEL"
+            validate="rules"
+            class="inputbox"
+            filter="rules"
+            component="com_moloch"
+            section="issue"
+        />
+    </fieldset>
+
+</form>

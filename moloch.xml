@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" method="upgrade">
+    <name>COM_MOLOCH</name>
+    <author>Lic. Joel Salazar Ramírez</author>
+    <creationDate>2025</creationDate>
+    <copyright>Copyright (C) 2025. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <authorEmail>joel@edugame.digital</authorEmail>
+    <authorUrl></authorUrl>
+    <version>1.0.0</version>
+    <description>COM_MOLOCH_XML_DESCRIPTION</description>
+    
+    <namespace path="src">Moloch\Component\Moloch</namespace>
+    
+    <scriptfile>script.php</scriptfile>
+    
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+    
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+    
+    <files folder="site">
+        <filename>moloch.php</filename>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+        <folder>layouts</folder>
+        <folder>forms</folder>
+        <folder>language</folder>
+        <folder>assets</folder>
+    </files>
+    
+    <media destination="com_moloch" folder="media">
+        <folder>js</folder>
+        <folder>css</folder>
+        <folder>images</folder>
+    </media>
+    
+    <administration>
+        <menu img="components/com_moloch/assets/images/moloch-16.png">COM_MOLOCH</menu>
+        <submenu>
+            <menu link="option=com_moloch&amp;view=issues">COM_MOLOCH_ISSUES</menu>
+            <menu link="option=com_moloch&amp;view=categories">COM_MOLOCH_CATEGORIES</menu>
+            <menu link="option=com_moloch&amp;view=steps">COM_MOLOCH_STEPS</menu>
+            <menu link="option=com_moloch&amp;view=attachments">COM_MOLOCH_ATTACHMENTS</menu>
+            <menu link="option=com_moloch&amp;view=logs">COM_MOLOCH_LOGS</menu>
+        </submenu>
+        
+        <files folder="administrator">
+            <filename>moloch.php</filename>
+            <folder>src</folder>
+            <folder>tmpl</folder>
+            <folder>forms</folder>
+            <folder>language</folder>
+            <folder>assets</folder>
+            <folder>sql</folder>
+        </files>
+    </administration>
+    
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="COM_MOLOCH_CONFIG_BASIC_LABEL">
+                <field
+                    name="map_provider"
+                    type="radio"
+                    class="btn-group btn-group-yesno"
+                    default="googlemaps"
+                    label="COM_MOLOCH_CONFIG_MAP_PROVIDER_LABEL"
+                    description="COM_MOLOCH_CONFIG_MAP_PROVIDER_DESC">
+                    <option value="googlemaps">COM_MOLOCH_CONFIG_MAP_GOOGLEMAPS</option>
+                    <option value="osm">COM_MOLOCH_CONFIG_MAP_OSM</option>
+                </field>
+                
+                <field
+                    name="google_maps_api_key"
+                    type="password"
+                    label="COM_MOLOCH_CONFIG_GOOGLE_API_KEY_LABEL"
+                    description="COM_MOLOCH_CONFIG_GOOGLE_API_KEY_DESC"
+                    showon="map_provider:googlemaps"
+                />
+                
+                <field
+                    name="default_latitude"
+                    type="number"
+                    label="COM_MOLOCH_CONFIG_DEFAULT_LAT_LABEL"
+                    description="COM_MOLOCH_CONFIG_DEFAULT_LAT_DESC"
+                    default="20.6296"
+                    step="any"
+                />
+                
+                <field
+                    name="default_longitude"
+                    type="number"
+                    label="COM_MOLOCH_CONFIG_DEFAULT_LNG_LABEL"
+                    description="COM_MOLOCH_CONFIG_DEFAULT_LNG_DESC"
+                    default="-87.0739"
+                    step="any"
+                />
+                
+                <field
+                    name="default_zoom"
+                    type="integer"
+                    label="COM_MOLOCH_CONFIG_DEFAULT_ZOOM_LABEL"
+                    description="COM_MOLOCH_CONFIG_DEFAULT_ZOOM_DESC"
+                    default="12"
+                    first="1"
+                    last="20"
+                />
+                
+                <field
+                    name="max_file_size"
+                    type="integer"
+                    label="COM_MOLOCH_CONFIG_MAX_FILE_SIZE_LABEL"
+                    description="COM_MOLOCH_CONFIG_MAX_FILE_SIZE_DESC"
+                    default="1073741824"
+                />
+                
+                <field
+                    name="allowed_file_types"
+                    type="textarea"
+                    label="COM_MOLOCH_CONFIG_ALLOWED_FILE_TYPES_LABEL"
+                    description="COM_MOLOCH_CONFIG_ALLOWED_FILE_TYPES_DESC"
+                    default="jpg,jpeg,png,gif,bmp,webp,mp4,avi,mov,wmv,flv,mp3,wav,ogg,aac,pdf,doc,docx,xls,xlsx,ppt,pptx,txt,rtf,odt,ods,odp"
+                    rows="3"
+                />
+                
+                <field
+                    name="guest_submissions"
+                    type="radio"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+                    label="COM_MOLOCH_CONFIG_GUEST_SUBMISSIONS_LABEL"
+                    description="COM_MOLOCH_CONFIG_GUEST_SUBMISSIONS_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                
+                <field
+                    name="auto_approve_issues"
+                    type="radio"
+                    class="btn-group btn-group-yesno"
+                    default="0"
+                    label="COM_MOLOCH_CONFIG_AUTO_APPROVE_LABEL"
+                    description="COM_MOLOCH_CONFIG_AUTO_APPROVE_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                
+                <field
+                    name="enable_voting"
+                    type="radio"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+                    label="COM_MOLOCH_CONFIG_ENABLE_VOTING_LABEL"
+                    description="COM_MOLOCH_CONFIG_ENABLE_VOTING_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                
+                <field
+                    name="enable_comments"
+                    type="radio"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+                    label="COM_MOLOCH_CONFIG_ENABLE_COMMENTS_LABEL"
+                    description="COM_MOLOCH_CONFIG_ENABLE_COMMENTS_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                
+                <field
+                    name="notification_email"
+                    type="email"
+                    label="COM_MOLOCH_CONFIG_NOTIFICATION_EMAIL_LABEL"
+                    description="COM_MOLOCH_CONFIG_NOTIFICATION_EMAIL_DESC"
+                />
+                
+                <field
+                    name="api_key"
+                    type="password"
+                    label="COM_MOLOCH_CONFIG_API_KEY_LABEL"
+                    description="COM_MOLOCH_CONFIG_API_KEY_DESC"
+                />
+            </fieldset>
+        </fields>
+    </config>
+    
+    <updateservers>
+        <server type="extension" priority="1" name="Moloch Component Update Site">
+            <![CDATA[https://updates.edugame.digital/moloch.xml]]>
+        </server>
+    </updateservers>
+</extension>
